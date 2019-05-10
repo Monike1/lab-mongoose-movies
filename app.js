@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/celebrities', { useNewUrlParser: true });
 const hbs = require('hbs');
 const bodyParser = require('body-parser');
-const Celebrity = require('./models/celebrity');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 hbs.registerPartials(__dirname + '/views/partials');
@@ -18,28 +17,12 @@ mongoose.connect('mongodb://localhost/celebrities', {useNewUrlParser: true}, (er
     }
 })
 
-// 'movies' refers to the collection in imdb database
-// const Movie = mongoose.model('movies', movieSchema);
 
+// routing
 
-// app.get("/", (req, res)=> {
-//     Movie.find({}, (err, result)=> {
+app.use('/', require('./routes/celebrities'));
+app.use('/', require('./routes/index'));
 
-//         res.render("index", { movies: result});
-//     })
-// })
-
-app.get('/', (req, res) => {
-    Celebrity.find({}, (err, result) => {
-      if (err) { 
-        return err;
-      } else {
-        res.render('index', {
-            celebrities: result
-          });
-      }
-    });
-  });
 
 
 

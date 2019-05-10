@@ -1,0 +1,12 @@
+<form action="/celebrities" method="get">
+    <input type="text" name="search">
+    <button type="submit">Search!</button>
+</form>
+
+<ul>
+  {{#each celebrities}}
+    <li>
+      {{> celebrity }}
+    </li>
+  {{/each}}
+</ul>
