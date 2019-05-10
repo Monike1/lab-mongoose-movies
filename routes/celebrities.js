@@ -9,7 +9,7 @@ router.get('/celebrities', (req, res) => {
     if (err) { 
       return err;
     } else {
-      res.render('celebrities', {
+      res.render('celebrities/index', {
           celebrities: result
         });
     }
