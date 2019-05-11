@@ -35,3 +35,5 @@ Celebrity.create(celebrities, (err, docs) => {
   });
   mongoose.connection.close();
 });
+
+//Run the seed file with node to seed your database.

@@ -19,6 +19,16 @@ router.get('/celebrities/', (req, res) => {
   });
 });
 
+router.post('/celebrities/:celebId/delete', (req, res, next) => {
+  Celebrity.findByIdAndRemove({_id: mongoose.Types.ObjectId(req.params.celebId)}, (err) => {
+    if (err) { 
+      return next(err);
+    } 
+    res.redirect('/celebrities');
+    
+  });
+});
+
 router.get('/celebrities/:celebId', (req, res) => {
   Celebrity.find({_id: mongoose.Types.ObjectId(req.params.celebId)}, (err, result) => {
     if (err) { 
@@ -40,12 +50,13 @@ router.post('/celebrities', (req, res) => {
     catchPhrase: req.body.catchPhrase
   };
   const newCelebrity = new Celebrity(newCelebrityObject);
+  console.log(newCelebrity);
 
-  save(newCelebrity, (err) => {
+  newCelebrity.save((err) => {
     if (err) {
       res.render('celebrity/new')
     } else {
-      res.render('celebrities');
+      res.redirect('celebrities');
     }
   });
 });

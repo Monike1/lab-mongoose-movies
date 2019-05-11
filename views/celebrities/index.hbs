@@ -10,6 +10,9 @@
   {{#each celebrities}}
     <li>
       {{> celebrity }}
+      <form action="celebrities/{{_id}}/delete" method="POST">
+      <button type="submit">Delete</button>
+      </form>
     </li>
   {{/each}}
 </ul>
