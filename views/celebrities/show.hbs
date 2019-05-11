@@ -2,8 +2,7 @@
 
   {{#each celebrities}}
     <h2>{{name}}</h2>
-    <h3> {{occupation}}</h3>
+    <h3>{{occupation}}</h3>
     <p>{{catchPhrase}}</p>
-    <a href="/detail?id={{_id}}">Detailed view</a>
-    <a href="/delete?id={{_id}}"><button>Delete</button></a>
+    <a href="/celebrities/{{_id}}/edit">Edit</a>
   {{/each}}
