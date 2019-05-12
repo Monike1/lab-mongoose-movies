@@ -1,13 +1,22 @@
- <h2>Edit Celebrity</h2>
+<h2>Edit Celebrity</h2>
 
-  <form action="/celebrities" method="POST" id="editform">
-  <label for="name">Name</label>
-  <input type="text" name="name" id="name">
+  {{#each celebrities}}
+  
+  {{#if _id}}
+    {{#if name}}
+      <form action="/celebrities/{{_id}}" method="POST">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" value="{{name}}">
 
-  <label for="occupation">Occupation</label>
-  <input type="text" name="occupation" id="occupation">
+        <label for="occupation">Occupation</label>
+        <input type="text" name="occupation" id="occupation" value="{{occupation}}">
 
-  <label for="catchPhrase">Catchphrase</label>
-  <input type="text" name="catchPhrase" id="catchPhrase">
+        <label for="catchPhrase">Catchphrase</label>
+        <input type="text" name="catchPhrase" id="catchPhrase" value="{{catchPhrase}}">
 
-  <button type="submit">Edit Celebrity</button>
+        <button type="submit">Edit a Celebrity</button>
+      </form>
+    {{/if}}
+  {{/if}}
+  {{/each}}
+ 

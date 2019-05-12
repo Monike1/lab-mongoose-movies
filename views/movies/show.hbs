@@ -1,0 +1,8 @@
+<h1>Detailed view</h1>
+
+  {{#each movies}}
+    <h2>{{title}}</h2>
+    <h3> {{genre}}</h3>
+    <p>{{plot}}</p>
+    <a href="/movies/{{_id}}/edit">Edit</a>
+  {{/each}}

@@ -9,7 +9,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
 
-
 mongoose.connect('mongodb://localhost/celebrities', {useNewUrlParser: true}, (err)=> {
     if(!err) {
       console.log("connected");
@@ -22,6 +21,7 @@ mongoose.connect('mongodb://localhost/celebrities', {useNewUrlParser: true}, (er
 // routing
 
 app.use('/', require('./routes/celebrities'));
+app.use('/', require('./routes/movies'));
 app.use('/', require('./routes/index'));
 
 
@@ -58,6 +58,8 @@ app.use('/', require('./routes/index'));
 //         else res.redirect(`/?search=${req.body.title}`)
 //     })
 // })
+
+
 
 app.listen(3000, ()=> {
     console.log("Listening!!!!!");

@@ -1,0 +1,21 @@
+<h2>Edit Celebrity</h2>
+
+  {{#each movies}}
+  
+  {{#if _id}}
+    {{#if title}}
+      <form action="/movies/{{_id}}" method="POST">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" value="{{title}}">
+
+        <label for="genre">Genre</label>
+        <input type="text" name="genre" id="genre" value="{{genre}}">
+
+        <label for="plot">Plot</label>
+        <input type="text" name="plot" id="plot" value="{{plot}}">
+
+        <button type="submit">Edit a Movie</button>
+      </form>
+    {{/if}}
+  {{/if}}
+  {{/each}}
