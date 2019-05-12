@@ -9,10 +9,12 @@ router.get('/celebrities/new', (req, res) => {
 
 router.get('/celebrities/:celebId/edit', (req, res, next) => {
   Celebrity.findById({_id: mongoose.Types.ObjectId(req.params.celebId)}, (err) => {
+    var celebrityId = req.params.celebId;
     if (err) {
       return next(err);
     } else {
       res.render('celebrities/edit');
+      console.log(req.params.celebId);
     }
   });
 });
@@ -40,6 +42,7 @@ router.get('/celebrities/:celebId', (req, res) => {
 
 router.post('/celebrities/:celebId', (req, res, next) => {
   const editedCelebrityObject = {
+    _id: mongoose.Types.ObjectId(req.params.celebId),
     name: req.body.name,
     occupation: req.body.occupation,
     catchPhrase: req.body.catchPhrase
@@ -48,7 +51,7 @@ router.post('/celebrities/:celebId', (req, res, next) => {
     if (err) {
       return next(err);
     } else {
-      res.redirect('./celebrities');
+      res.redirect('celebrities');
     }
   });
 });
